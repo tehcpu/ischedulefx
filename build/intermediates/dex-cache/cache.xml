@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="58143e9bcfef25a5052a02aaa97726edf6db77d3">
+        <dex dex="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_2dc5eaea1a925408816a018bf387bac7666649a1/classes.dex" />
+    </item>
+    <item
+        jar="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="c393057407f7b87d8ab6785d1d8b660c9908dd1a">
+        <dex dex="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_d41756285388ecdf5832ecf8fd07a39792106ff5/classes.dex" />
+    </item>
+
+</items>

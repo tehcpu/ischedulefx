@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/schedule_item_element.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/layout/schedule_item_element.xml"
+    },
+    {
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/list_activity_layout.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/layout/list_activity_layout.xml"
+    },
+    {
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/main_tab_layout.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/layout/main_tab_layout.xml"
+    },
+    {
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/check_item.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/layout/check_item.xml"
+    },
+    {
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/update_dialog_background.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/layout/update_dialog_background.xml"
+    },
+    {
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/main.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/layout/main.xml"
+    },
+    {
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/check_list_activity_layout.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/layout/check_list_activity_layout.xml"
+    },
+    {
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/schedule_list_item.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/layout/schedule_list_item.xml"
+    },
+    {
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/info_dialog_layout.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/layout/info_dialog_layout.xml"
+    }
+]
