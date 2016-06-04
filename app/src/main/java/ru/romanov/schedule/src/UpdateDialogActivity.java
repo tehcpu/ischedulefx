@@ -9,17 +9,6 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.protocol.HTTP;
-import org.json.JSONException;
-import org.xmlpull.v1.XmlPullParser;
-
 import ru.romanov.schedule.R;
 import ru.romanov.schedule.utils.MySubject;
 import ru.romanov.schedule.utils.MySubjectUpdateManager;
@@ -39,6 +28,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONException;
 
 public class UpdateDialogActivity extends Activity implements OnClickListener {
 
@@ -108,7 +99,7 @@ public class UpdateDialogActivity extends Activity implements OnClickListener {
 
 		@Override
 		protected Map<String, String> doInBackground(Void... params) {
-			HttpClient client = new DefaultHttpClient();
+/*			HttpClient client = new DefaultHttpClient();
 			String reqString = RequestStringsCreater
 					.createCheckUpdateString(token);
 			HttpResponse responce = null;
@@ -139,6 +130,7 @@ public class UpdateDialogActivity extends Activity implements OnClickListener {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			*/
 			return null;
 		}
 
@@ -187,7 +179,7 @@ public class UpdateDialogActivity extends Activity implements OnClickListener {
 
 		@Override
 		protected MySubjectUpdateManager doInBackground(Void... params) {
-			HttpClient client = new DefaultHttpClient();
+/*			HttpClient client = new DefaultHttpClient();
 			String reqString = RequestStringsCreater.createUpdateString(token);
 			HttpResponse response = null;
 			try {
@@ -218,7 +210,8 @@ public class UpdateDialogActivity extends Activity implements OnClickListener {
 
 			}
 			return null;
-
+*/
+			return null;
 		}
 
 		@Override

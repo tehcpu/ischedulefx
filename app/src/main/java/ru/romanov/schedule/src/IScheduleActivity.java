@@ -6,20 +6,6 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.protocol.HTTP;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
 import ru.romanov.schedule.utils.*;
 import ru.romanov.schedule.R;
 import android.app.Activity;
@@ -38,6 +24,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class IScheduleActivity extends Activity {
 
 	private SharedPreferences mSharedPreferences;
@@ -50,8 +39,7 @@ public class IScheduleActivity extends Activity {
 		mSharedPreferences = getSharedPreferences(
 				StringConstants.SCHEDULE_SHARED_PREFERENCES, MODE_PRIVATE);
 		if (mSharedPreferences.getString(StringConstants.SHARED_LOGIN, null) == null
-				|| mSharedPreferences.getString(StringConstants.SHARED_PASS,
-						null) == null
+				|| mSharedPreferences.getString(StringConstants.SHARED_PASS, null) == null
 				|| mSharedPreferences.getString(StringConstants.TOKEN, null) == null) {
 			Editor editor = mSharedPreferences.edit();
 			editor.putString(StringConstants.SHARED_LOGIN, null);
@@ -82,7 +70,6 @@ public class IScheduleActivity extends Activity {
 				PostRequestAuthManager pram = new PostRequestAuthManager(
 						loginEditText.getText().toString(), passEditText
 								.getText().toString());
-				pram.execute((Void[]) null);
 
 			}
 		});
@@ -101,8 +88,7 @@ public class IScheduleActivity extends Activity {
 	}
 	
 	@SuppressWarnings("unused")
-	private class PostRequestAuthManager extends
-			AsyncTask<Void, Void, HttpResponse> {
+	private class PostRequestAuthManager {
 
 		private String login;
 		private String pass;
@@ -115,85 +101,53 @@ public class IScheduleActivity extends Activity {
 		public PostRequestAuthManager(String login, String pass) {
 			this.login = login;
 			this.pass = pass;
-		}
 
-		@Override
-		protected void onPreExecute() {
-			super.onPreExecute();
 			dialog = ProgressDialog.show(IScheduleActivity.this, "", getString(R.string.loading), true);
-		}
-		@Override
-		protected HttpResponse doInBackground(Void... params) {
-			HttpClient client = new DefaultHttpClient();
-			String reqString = RequestStringsCreater.createAuthRequestSting(
-					login, pass);
-			HttpResponse responce = null;
-			try {
-				HttpPost request = new HttpPost(StringConstants.MY_URI);
-				StringEntity entity = new StringEntity(reqString, "UTF-8");
-				request.setHeader(HTTP.CONTENT_TYPE, "text/xml");
-				request.setEntity(entity);
-				responce = client.execute(request);
 
-			} catch (ClientProtocolException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return responce;
+			ApiHolder.getInstance().auth(login, pass, new ApiHolder.onResponse() {
+				public Object email;
+				public String phone;
+				public String name;
+				public String token;
+
+				@Override
+				public JSONObject onSuccess(JSONObject response) {
+					Toast.makeText(IScheduleActivity.this,
+							getString(R.string.auth_success), Toast.LENGTH_LONG).show();
+					try {
+						this.token = response.getString("access_token");
+						this.name = "qwe";
+						this.phone = "qwe";
+						this.email = "qwe";
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
+					saveSessionData();
+					startMainTabActivity();
+					dialog.dismiss();
+
+					return null;
+				}
+
+				@Override
+				public JSONObject onFail(int code) {
+					switch (code) {
+						case 0:
+							Toast.makeText(IScheduleActivity.this, "Не получилось соединиться с серверм.", Toast.LENGTH_LONG).show();
+							break;
+						case 1:
+							Toast.makeText(IScheduleActivity.this,
+									getString(R.string.login_error), Toast.LENGTH_LONG).show();
+							break;
+						default:break;
+					}
+					dialog.dismiss();
+					return null;
+				}
+			});
 		}
 
-		@Override
-		protected void onPostExecute(HttpResponse result) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(result);
-			if (result != null) {
-				try {
-					Log.d("kek", "res -->"+result.getEntity().getContent().toString());
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				HttpEntity ent = result.getEntity();
-				try {
-					BufferedReader r = new BufferedReader(
-							new InputStreamReader(ent.getContent()));
-					StringBuilder total = new StringBuilder();
-					String line;
-					while ((line = r.readLine()) != null) {
-						Log.d("kek", "res -->"+line);
-						total.append(line);
-					}
-					Map<String, String> resultMap = XMLParser.parseAuthResponse(total.toString());
-					if(resultMap.get(XMLParser.STATUS).equals(XMLParser.OK)) {
-						Toast.makeText(IScheduleActivity.this,
-								getString(R.string.auth_success), Toast.LENGTH_LONG).show();
-						this.token = resultMap.get(XMLParser.TOKEN);
-						this.name = resultMap.get(XMLParser.NAME);
-						this.phone = resultMap.get(XMLParser.PHONE);
-						this.email = resultMap.get(XMLParser.EMAIL);
-						saveSessionData();
-						startMainTabActivity();
-						
-					} else {
-						Toast.makeText(IScheduleActivity.this,
-								getString(R.string.login_error), Toast.LENGTH_LONG).show();
-					}
-				} catch (IllegalStateException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			} else {
-				Toast.makeText(IScheduleActivity.this, "Не получилось соединиться с серверм.", Toast.LENGTH_LONG).show();
-			}
-			dialog.dismiss();
-		}
 		
 		private void saveSessionData() {
 			Editor editor = IScheduleActivity.this.mSharedPreferences.edit();
