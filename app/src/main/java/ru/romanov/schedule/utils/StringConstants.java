@@ -2,7 +2,7 @@ package ru.romanov.schedule.utils;
 
 public abstract class StringConstants {
 	
-	public static String MY_URI = "http://85.143.222.160:80/";
+	public static String MY_URI = "http://api.tehcpu.me/";
 	
 	public static String SCHEDULE_SHARED_PREFERENCES = "shedulesharedpreferences";
 	public static String MY_SCHEDULE = "my_schedule";

@@ -16,6 +16,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import ru.romanov.schedule.AppController;
 import ru.romanov.schedule.R;
 import ru.romanov.schedule.adapters.ScheduleListAdapter;
 import ru.romanov.schedule.utils.MySubject;
@@ -25,24 +26,33 @@ import ru.romanov.schedule.utils.StringConstants;
 import ru.romanov.schedule.utils.XMLParser;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
-public class ScheduleListActivity extends ListActivity {
+public class ScheduleListActivity extends Fragment {
 
 	private ArrayList <MySubject> subjList;
-	
+	private ListView listView;
+	private View v;
+
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.list_activity_layout);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		v = inflater.inflate(R.layout.list_activity_layout, container, false);
+		return v;
 	}
 
 	@Override
-	protected void onStart() {
+	public void onStart() {
 		super.onStart();
 		try {
 			loadSchedule();
@@ -78,8 +88,10 @@ public class ScheduleListActivity extends ListActivity {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}*/
-		ScheduleListAdapter adapter = new ScheduleListAdapter(subjList, this);
-		setListAdapter(adapter);
+		listView = (ListView) v.findViewById(android.R.id.list);
+
+		ScheduleListAdapter adapter = new ScheduleListAdapter(subjList, v.getContext());
+		listView.setAdapter(adapter);
 	}
 
 	/**
@@ -108,7 +120,7 @@ public class ScheduleListActivity extends ListActivity {
 	}
 	
 	private void loadSchedule() throws JSONException, ParseException {
-		SharedPreferences sherPref = getSharedPreferences(StringConstants.MY_SCHEDULE, MODE_PRIVATE);
+		SharedPreferences sherPref = AppController.getInstance().getSharedPreferences(StringConstants.MY_SCHEDULE, Context.MODE_PRIVATE);
 		Map<String,String> myMap = (Map<String, String>) sherPref.getAll();
 		this.subjList = new ArrayList<MySubject>(myMap.size());
 		for (String key : myMap.keySet()) {

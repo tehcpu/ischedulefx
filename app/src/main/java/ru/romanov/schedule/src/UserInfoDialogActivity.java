@@ -1,8 +1,10 @@
 package ru.romanov.schedule.src;
 
+import ru.romanov.schedule.AppController;
 import ru.romanov.schedule.R;
 import ru.romanov.schedule.utils.StringConstants;
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.ContactsContract.CommonDataKinds.Email;
@@ -29,7 +31,7 @@ public class UserInfoDialogActivity extends Activity implements OnClickListener{
 	}
 	@Override
 	protected void onStart() {
-		SharedPreferences sp = getSharedPreferences(StringConstants.SCHEDULE_SHARED_PREFERENCES, MODE_PRIVATE);
+		SharedPreferences sp = AppController.getInstance().getSharedPreferences(StringConstants.SCHEDULE_SHARED_PREFERENCES, Context.MODE_PRIVATE);
 		this.emailTV.setText(sp.getString(StringConstants.SHARED_EMAIL, "-"));
 		this.nameTV.setText(sp.getString(StringConstants.SHARED_NAME, "-"));
 		this.phoneTV.setText(sp.getString(StringConstants.SHARED_PHONE, "-"));

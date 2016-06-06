@@ -6,16 +6,19 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
+import ru.romanov.schedule.AppController;
 import ru.romanov.schedule.utils.*;
 import ru.romanov.schedule.R;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.ContactsContract.RawContacts.Entity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,7 +30,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class IScheduleActivity extends Activity {
+public class IScheduleActivity extends AppCompatActivity {
 
 	private SharedPreferences mSharedPreferences;
 	private EditText loginEditText;
@@ -36,8 +39,9 @@ public class IScheduleActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mSharedPreferences = getSharedPreferences(
-				StringConstants.SCHEDULE_SHARED_PREFERENCES, MODE_PRIVATE);
+		setContentView(R.layout.main);
+		mSharedPreferences = AppController.getInstance().getSharedPreferences(
+				StringConstants.SCHEDULE_SHARED_PREFERENCES, Context.MODE_PRIVATE);
 		if (mSharedPreferences.getString(StringConstants.SHARED_LOGIN, null) == null
 				|| mSharedPreferences.getString(StringConstants.SHARED_PASS, null) == null
 				|| mSharedPreferences.getString(StringConstants.TOKEN, null) == null) {
@@ -46,7 +50,6 @@ public class IScheduleActivity extends Activity {
 			editor.putString(StringConstants.SHARED_PASS, null);
 			editor.putString(StringConstants.TOKEN, null);
 			editor.commit();
-			setContentView(R.layout.main);
 		} else {
 			// NEXT ACTIVITY
 			//setContentView(R.layout.entering_layout);
@@ -86,8 +89,7 @@ public class IScheduleActivity extends Activity {
 		startActivity(intent);
 		finish();
 	}
-	
-	@SuppressWarnings("unused")
+
 	private class PostRequestAuthManager {
 
 		private String login;
@@ -98,14 +100,14 @@ public class IScheduleActivity extends Activity {
 		private String phone;
 		private ProgressDialog dialog;
 		
-		public PostRequestAuthManager(String login, String pass) {
+		public PostRequestAuthManager(final String login, final String pass) {
 			this.login = login;
 			this.pass = pass;
 
 			dialog = ProgressDialog.show(IScheduleActivity.this, "", getString(R.string.loading), true);
 
 			ApiHolder.getInstance().auth(login, pass, new ApiHolder.onResponse() {
-				public Object email;
+				public String email;
 				public String phone;
 				public String name;
 				public String token;
@@ -123,7 +125,7 @@ public class IScheduleActivity extends Activity {
 						e.printStackTrace();
 					}
 
-					saveSessionData();
+					saveSessionData(login, pass, token, name, phone, email);
 					startMainTabActivity();
 					dialog.dismiss();
 
@@ -149,14 +151,14 @@ public class IScheduleActivity extends Activity {
 		}
 
 		
-		private void saveSessionData() {
-			Editor editor = IScheduleActivity.this.mSharedPreferences.edit();
-			editor.putString(StringConstants.SHARED_LOGIN, this.login);
-			editor.putString(StringConstants.SHARED_PASS, this.pass);
-			editor.putString(StringConstants.TOKEN, this.token);
-			editor.putString(StringConstants.SHARED_NAME, this.name);
-			editor.putString(StringConstants.SHARED_PHONE, this.phone);
-			editor.putString(StringConstants.SHARED_EMAIL, this.email);
+		private void saveSessionData(String login, String pass, String token, String name, String phone, String email) {
+			Editor editor = mSharedPreferences.edit();
+			editor.putString(StringConstants.SHARED_LOGIN, login);
+			editor.putString(StringConstants.SHARED_PASS, pass);
+			editor.putString(StringConstants.TOKEN, token);
+			editor.putString(StringConstants.SHARED_NAME, name);
+			editor.putString(StringConstants.SHARED_PHONE, phone);
+			editor.putString(StringConstants.SHARED_EMAIL, email);
 			editor.commit();
 		}
 		

@@ -10,6 +10,8 @@ import ru.romanov.schedule.R;
 import ru.romanov.schedule.utils.RequestStringsCreater;
 import ru.romanov.schedule.utils.StringConstants;
 import ru.romanov.schedule.utils.XMLParser;
+
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.app.TabActivity;
@@ -19,6 +21,10 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTabHost;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -26,34 +32,44 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainTabActivity extends TabActivity {
+public class MainTabActivity extends AppCompatActivity {
 
 	TextView lastSyncTV;
+	private FragmentTabHost mTabHost;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_tab_layout);
 		lastSyncTV = (TextView) findViewById(R.id.maintab_last_sync);
-		Resources res = getResources(); // Resource object to get Drawables
-		TabHost tabHost = getTabHost(); // The activity TabHost
-		TabHost.TabSpec spec; // Resusable TabSpec for each tab
-		Intent intent; // Reusable Intent for each tab
 
-		// Create an Intent to launch an Activity for the tab (to be reused)
-		intent = new Intent().setClass(this, ScheduleListActivity.class);
+		mTabHost = (FragmentTabHost)findViewById(android.R.id.tabhost);
+		mTabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
 
-		// Initialize a TabSpec for each tab and add it toresId the TabHost
-		spec = tabHost.newTabSpec("scedule").setIndicator(getString(R.string.schedule))
-				.setContent(intent);
-		tabHost.addTab(spec);
+		mTabHost.addTab(mTabHost.newTabSpec(getString(R.string.schedule)).setIndicator(getString(R.string.schedule)),
+				ScheduleListActivity.class, null);
+		mTabHost.addTab(mTabHost.newTabSpec(getString(R.string.updates)).setIndicator(getString(R.string.updates)),
+				UpdateListActivity.class, null);
 
-		// Do the same for the other tabs
-		intent = new Intent().setClass(this, UpdateListActivity.class);
-		spec = tabHost.newTabSpec("updates").setIndicator(getString(R.string.updates))
-				.setContent(intent);
-		tabHost.addTab(spec);
-
-		tabHost.setCurrentTab(0);
+//		Resources res = getResources(); // Resource object to get Drawables
+//		TabHost tabHost = getTabHost(); // The activity TabHost
+//		TabHost.TabSpec spec; // Resusable TabSpec for each tab
+//		Intent intent; // Reusable Intent for each tab
+//
+//		// Create an Intent to launch an Activity for the tab (to be reused)
+//		intent = new Intent().setClass(this, ScheduleListActivity.class);
+//
+//		// Initialize a TabSpec for each tab and add it toresId the TabHost
+//		spec = tabHost.newTabSpec("scedule").setIndicator(getString(R.string.schedule))
+//				.setContent(intent);
+//		tabHost.addTab(spec);
+//
+//		// Do the same for the other tabs
+//		intent = new Intent().setClass(this, UpdateListActivity.class);
+//		spec = tabHost.newTabSpec("updates").setIndicator(getString(R.string.updates))
+//				.setContent(intent);
+//		tabHost.addTab(spec);
+//
+//		tabHost.setCurrentTab(0);
 	}
 
 	@Override

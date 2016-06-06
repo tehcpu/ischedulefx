@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:background="#6699cc" >
+
+    android:orientation="vertical" >
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
         android:longClickable="true" >
 
         <TextView
@@ -37,9 +38,10 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/textView2"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:ems="10"
-            android:text="" >
+            android:text=""
+            android:singleLine="true">
 
             <requestFocus />
         </EditText>
@@ -61,20 +63,20 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/textView3"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:ems="10"
             android:inputType="textPassword"
-            android:text="" />
+            android:text=""
+            android:singleLine="true" />
 
         <Button
             android:id="@+id/logInButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="10dp"
-            android:text="@string/enter" />
+            android:text="@string/enter"
+            android:layout_marginTop="34dp"
+            android:layout_below="@+id/passEText"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 

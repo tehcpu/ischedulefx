@@ -1,26 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" >
-
-    <item
-        jar="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="67e659134ebf8f9f09026ba6fae830debbf5623f">
-        <dex dex="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_2dc5eaea1a925408816a018bf387bac7666649a1/classes.dex" />
-    </item>
-    <item
-        jar="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="35a8a09960938dccce8c098eb6d71355c2ce40b4">
-        <dex dex="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_d41756285388ecdf5832ecf8fd07a39792106ff5/classes.dex" />
-    </item>
-    <item
-        jar="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.volley/volley/1.0.0/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
-        <dex dex="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.volley-volley-1.0.0_b259c117639f3ac974a5086221169999f6a3fb5c/classes.dex" />
-    </item>
-
-</items>
+<items version="2" />

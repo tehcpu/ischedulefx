@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.json.JSONObject;
 
+import ru.romanov.schedule.AppController;
 import ru.romanov.schedule.R;
 import ru.romanov.schedule.adapters.ScheduleCheckListAdapter;
 import ru.romanov.schedule.utils.MySubject;
@@ -15,36 +16,44 @@ import ru.romanov.schedule.utils.StringConstants;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ListActivity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
-public class UpdateListActivity extends ListActivity implements OnClickListener {
+public class UpdateListActivity extends Fragment {
 
 	private List<MySubject> newSubjects;
 	private ScheduleCheckListAdapter adapter;
 	private String token;
+	private View v;
+	private ListView listView;
+
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.check_list_activity_layout);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		v = inflater.inflate(R.layout.check_list_activity_layout, container, false);
+		return v;
 	}
 
 	@Override
-	protected void onStart() {
+	public void onStart() {
 		super.onStart();
-		SharedPreferences sp = getSharedPreferences(StringConstants.SCHEDULE_SHARED_PREFERENCES, MODE_PRIVATE);
-		this.token = sp.getString(StringConstants.TOKEN, null);
-		if(this.token==null) {
+		SharedPreferences sp = AppController.getInstance().getSharedPreferences(StringConstants.SCHEDULE_SHARED_PREFERENCES, Context.MODE_PRIVATE);
+		token = sp.getString(StringConstants.TOKEN, null);
+		if(token==null) {
 			//parampampam ERROR
-			Toast.makeText(this, "Что-то странное происходит! Где токен-то? Сейчас каааак всё сломается..", Toast.LENGTH_LONG).show();
+			Toast.makeText(v.getContext(), "Что-то странное происходит! Где токен-то? Сейчас каааак всё сломается..", Toast.LENGTH_LONG).show();
 		}
-		sp = getSharedPreferences(
-				StringConstants.MY_SCHEDULE, MODE_PRIVATE);
+		sp = AppController.getInstance().getSharedPreferences(
+				StringConstants.MY_SCHEDULE, Context.MODE_PRIVATE);
 		Map<String, String> map = (Map<String, String>) sp.getAll();
 		ArrayList<MySubject> scedule = new ArrayList<MySubject>(map.size());
 		try {
@@ -58,27 +67,30 @@ public class UpdateListActivity extends ListActivity implements OnClickListener 
 					sbjToCheck.add(sbj);
 				}
 			}
-			this.newSubjects = sbjToCheck;
+			newSubjects = sbjToCheck;
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		this.adapter =new ScheduleCheckListAdapter(this.newSubjects, this);
-		setListAdapter(this.adapter);
+
+		listView = (ListView) v.findViewById(android.R.id.list);
+
+		adapter =new ScheduleCheckListAdapter(newSubjects, v.getContext());
+		listView.setAdapter(adapter);
 		
-		Button confirmButton = (Button) findViewById(R.id.check_confirm_button);
-		confirmButton.setOnClickListener(this);
+		Button confirmButton = (Button) v.findViewById(R.id.check_confirm_button);
+		confirmButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				switch (v.getId()){
+					case R.id.check_confirm_button:
+						StringBuilder sb = new StringBuilder();
+						HashMap<String, String> idMap= adapter.getCheckedElemetsStatus();
+						String reqBody = RequestStringsCreater.createConfirmCheckString(token, idMap);
+						new AlertDialog.Builder(v.getContext()).setMessage(reqBody).show();
+						break;
+				}
+			}
+		});
 
-	}
-
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()){
-		case R.id.check_confirm_button:
-			StringBuilder sb = new StringBuilder();
-			HashMap<String, String> idMap= this.adapter.getCheckedElemetsStatus();
-			String reqBody = RequestStringsCreater.createConfirmCheckString(token, idMap);
-			new AlertDialog.Builder(this).setMessage(reqBody).show();
-			break;
-		}
 	}
 }
