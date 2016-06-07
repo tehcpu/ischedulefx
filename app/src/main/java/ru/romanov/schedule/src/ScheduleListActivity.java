@@ -27,6 +27,7 @@ import ru.romanov.schedule.utils.XMLParser;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -92,6 +94,17 @@ public class ScheduleListActivity extends Fragment {
 
 		ScheduleListAdapter adapter = new ScheduleListAdapter(subjList, v.getContext());
 		listView.setAdapter(adapter);
+		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Intent i = new Intent(getContext(), ScheduleDayActivity.class);
+				TextView dayOfWeek = (TextView) view.findViewById(R.id.schedule_lsit_item_dow);
+				TextView date = (TextView) view.findViewById(R.id.schedule_list_item_date);
+				i.putExtra("DayOfWeek", dayOfWeek.getText());
+				i.putExtra("Date", date.getText());
+				startActivity(i);
+			}
+		});
 	}
 
 	/**

@@ -4,44 +4,49 @@
     api-level="24"
     density="420dpi"
     format="7"
-    timestamp="1465116412848071000" >
+    timestamp="1465272833004139000" >
 
     <task
         name="javac"
-        duration="91" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="10" />
+        duration="0" />
     <task
         name="verifier"
-        duration="1" />
+        duration="0" />
 
-    <artifact
-        location="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
-        type="DEX" />
-
-    <build timestamp="1465113361398578000" >
+    <build timestamp="1465252986274897000" >
         <artifact
             location="/Users/codebreak/Downloads/ischedulefx 2/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
     </build>
-    <build timestamp="1465114307547761000" >
+    <build timestamp="1465266688063784000" >
+        <artifact
+            location="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_0/classes.dex"
+            type="DEX" />
+    </build>
+    <build timestamp="1465272291851070000" >
+        <artifact
+            location="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_9/classes.dex"
+            type="DEX" />
+    </build>
+    <build timestamp="1465272464416762000" >
+        <artifact
+            location="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/resources-debug.ap_"
+            type="RESOURCES" />
         <artifact
             location="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1/classes.dex"
             type="DEX" />
     </build>
-    <build timestamp="1465114830098833000" >
-        <artifact
-            location="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/resources-debug.ap_"
-            type="RESOURCES" />
-    </build>
-    <build timestamp="1465116412848071000" >
+    <build timestamp="1465272753822763000" >
         <artifact
             location="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
             type="DEX" />
     </build>
+    <build timestamp="1465272833004139000" />
 
 </instant-run>

@@ -8,8 +8,7 @@
         android:minSdkVersion="16"
         android:targetSdkVersion="23" />
 
-    <uses-permission android:name="android.permission.INTERNET" >
-    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name="ru.romanov.schedule.AppController"
@@ -29,6 +28,7 @@
         <activity android:name="ru.romanov.schedule.src.MainTabActivity" />
         <activity android:name="ru.romanov.schedule.src.UpdateDialogActivity" />
         <activity android:name="ru.romanov.schedule.src.UserInfoDialogActivity" />
+        <activity android:name="ru.romanov.schedule.src.ScheduleDayActivity" />
     </application>
 
 </manifest>

@@ -6,7 +6,9 @@ import java.io.InputStreamReader;
 import java.util.Map;
 
 
+import ru.romanov.schedule.AppController;
 import ru.romanov.schedule.R;
+import ru.romanov.schedule.utils.ApiHolder;
 import ru.romanov.schedule.utils.RequestStringsCreater;
 import ru.romanov.schedule.utils.StringConstants;
 import ru.romanov.schedule.utils.XMLParser;
@@ -15,6 +17,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.app.TabActivity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -25,12 +28,15 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONObject;
 
 public class MainTabActivity extends AppCompatActivity {
 
@@ -50,38 +56,44 @@ public class MainTabActivity extends AppCompatActivity {
 		mTabHost.addTab(mTabHost.newTabSpec(getString(R.string.updates)).setIndicator(getString(R.string.updates)),
 				UpdateListActivity.class, null);
 
-//		Resources res = getResources(); // Resource object to get Drawables
-//		TabHost tabHost = getTabHost(); // The activity TabHost
-//		TabHost.TabSpec spec; // Resusable TabSpec for each tab
-//		Intent intent; // Reusable Intent for each tab
-//
-//		// Create an Intent to launch an Activity for the tab (to be reused)
-//		intent = new Intent().setClass(this, ScheduleListActivity.class);
-//
-//		// Initialize a TabSpec for each tab and add it toresId the TabHost
-//		spec = tabHost.newTabSpec("scedule").setIndicator(getString(R.string.schedule))
-//				.setContent(intent);
-//		tabHost.addTab(spec);
-//
-//		// Do the same for the other tabs
-//		intent = new Intent().setClass(this, UpdateListActivity.class);
-//		spec = tabHost.newTabSpec("updates").setIndicator(getString(R.string.updates))
-//				.setContent(intent);
-//		tabHost.addTab(spec);
-//
-//		tabHost.setCurrentTab(0);
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		String lastSync = getSharedPreferences(
+		String lastSync = AppController.getInstance().getSharedPreferences(
 				StringConstants.SCHEDULE_SHARED_PREFERENCES, MODE_PRIVATE)
 				.getString(StringConstants.SHARED_LAST_SYNC_DATE, null);
 		if(lastSync==null)
 			lastSyncTV.setText("-");
 		else
 			lastSyncTV.setText(lastSync);
+		Log.d("kek", "time left");
+		ApiHolder.getInstance().validateToken(new ApiHolder.onResponse() {
+			@Override
+			public JSONObject onSuccess(Object response) {
+				return null;
+			}
+
+			@Override
+			public JSONObject onFail(int code) {
+				Log.d("kek", "time left");
+				Toast.makeText(getApplicationContext(),
+						"Истекло время действия токена.. Пожалуйста, перелогиньтесь", Toast.LENGTH_LONG).show();
+				SharedPreferences sp = AppController.getInstance().getSharedPreferences(StringConstants.SCHEDULE_SHARED_PREFERENCES, Context.MODE_PRIVATE);
+				SharedPreferences.Editor editor = sp.edit();
+				editor.putString(StringConstants.SHARED_LOGIN, null);
+				editor.putString(StringConstants.SHARED_PASS, null);
+				editor.putString(StringConstants.TOKEN, null);
+				editor.commit();
+				Intent myIntent = new Intent(MainTabActivity.this, IScheduleActivity.class);
+				MainTabActivity.this.startActivity(myIntent);
+				finish();
+				return null;
+			}
+		});
+
+		ApiHolder.getInstance().setUserInfo();
 
 	}
 

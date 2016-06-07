@@ -53,9 +53,11 @@ public class IScheduleActivity extends AppCompatActivity {
 		} else {
 			// NEXT ACTIVITY
 			//setContentView(R.layout.entering_layout);
-			Toast.makeText(this,
-					"Всё пучком! Следующая активити...", Toast.LENGTH_LONG).show();
-			startMainTabActivity();
+			if (mSharedPreferences.getString(StringConstants.TOKEN, null) != null) {
+				Toast.makeText(this,
+						"Всё пучком! Следующая активити...", Toast.LENGTH_LONG).show();
+				startMainTabActivity();
+			}
 		}
 		//TODO: remove it
 
@@ -113,17 +115,24 @@ public class IScheduleActivity extends AppCompatActivity {
 				public String token;
 
 				@Override
-				public JSONObject onSuccess(JSONObject response) {
+				public JSONObject onSuccess(Object resp) {
 					Toast.makeText(IScheduleActivity.this,
 							getString(R.string.auth_success), Toast.LENGTH_LONG).show();
+					JSONObject response = null;
+						response = (JSONObject) resp;
 					try {
-						this.token = response.getString("access_token");
+						if (response != null) {
+							this.token = response.getString("access_token");
+						}
 						this.name = "qwe";
 						this.phone = "qwe";
 						this.email = "qwe";
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
+
+					// Making the second request for the personal data (see oAuth specification)
+					ApiHolder.getInstance().setUserInfo();
 
 					saveSessionData(login, pass, token, name, phone, email);
 					startMainTabActivity();
