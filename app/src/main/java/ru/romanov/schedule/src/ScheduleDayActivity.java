@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -34,6 +35,8 @@ public class ScheduleDayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_schedule_day);
 
         final ListView listView = (ListView) findViewById(R.id.subjects_list);
+        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
 
         Intent intent = getIntent();
         String dow = intent.getStringExtra("DayOfWeek");
@@ -47,6 +50,7 @@ public class ScheduleDayActivity extends AppCompatActivity {
         ApiHolder.getInstance().loadCurrentDay(date, dow, new ApiHolder.onResponse() {
             @Override
             public JSONObject onSuccess(Object response) {
+                progressBar.setVisibility(View.GONE);
                 Log.d(TAG, "resp --> "+response);
                 JSONArray array = null;
                 array = (JSONArray) response;
@@ -82,7 +86,7 @@ public class ScheduleDayActivity extends AppCompatActivity {
 
             @Override
             public JSONObject onFail(int code) {
-
+                progressBar.setVisibility(View.GONE);
                 if (code == 0) {
                     Toast.makeText(getApplicationContext(), "Не удалось получить данные от сервера, проверьте соединение.", Toast.LENGTH_LONG).show();
                 } else if (code == 1) {

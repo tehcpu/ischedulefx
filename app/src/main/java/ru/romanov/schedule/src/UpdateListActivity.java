@@ -36,6 +36,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class UpdateListActivity extends Fragment {
@@ -57,6 +58,7 @@ public class UpdateListActivity extends Fragment {
 	public void onStart() {
 		super.onStart();
 
+		final ProgressBar progressBar = (ProgressBar) v.findViewById(R.id.progressBar);
 		final ListView listView = (ListView) v.findViewById(R.id.list_updates_item);
 
 		final String[] days = {"Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"};
@@ -64,6 +66,7 @@ public class UpdateListActivity extends Fragment {
 		ApiHolder.getInstance().loadUpdates(new ApiHolder.onResponse() {
 			@Override
 			public JSONObject onSuccess(Object response) {
+				progressBar.setVisibility(View.GONE);
 				Log.d(TAG, "resp --> "+response);
 				JSONArray array = null;
 				array = (JSONArray) response;
@@ -99,6 +102,7 @@ public class UpdateListActivity extends Fragment {
 
 			@Override
 			public JSONObject onFail(int code) {
+				progressBar.setVisibility(View.GONE);
 				if (code == 0) {
 					Toast.makeText(getContext(), "Не удалось получить данные от сервера, проверьте соединение.", Toast.LENGTH_LONG).show();
 				} else if (code == 1) {

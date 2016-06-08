@@ -1,12 +1,3 @@
-CHANGED,/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/ru/romanov/schedule/R$menu$override.class
-CHANGED,/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/ru/romanov/schedule/R$integer$override.class
-CHANGED,/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/ru/romanov/schedule/R$override.class
-CHANGED,/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/ru/romanov/schedule/R$string$override.class
-CHANGED,/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/ru/romanov/schedule/R$id$override.class
-CHANGED,/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/ru/romanov/schedule/src/MainTabActivity$3$override.class
-CHANGED,/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/ru/romanov/schedule/R$styleable$override.class
-CHANGED,/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/ru/romanov/schedule/src/MainTabActivity$2$override.class
-CHANGED,/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/ru/romanov/schedule/R$style$override.class
-CHANGED,/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/ru/romanov/schedule/src/MainTabActivity$override.class
+CHANGED,/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/ru/romanov/schedule/src/ScheduleDayActivity$1$override.class
 CHANGED,/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/android/tools/fd/runtime/AppPatchesLoaderImpl.class
-CHANGED,/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/ru/romanov/schedule/R$layout$override.class
+CHANGED,/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/ru/romanov/schedule/src/ScheduleDayActivity$override.class
