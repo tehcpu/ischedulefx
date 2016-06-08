@@ -5,6 +5,7 @@ package ru.romanov.schedule.models;
  */
 public class Subject {
 
+    private Integer id;
     private String name;
     private String start_date;
     private String end_date;
@@ -16,7 +17,8 @@ public class Subject {
     public Subject() {
     }
 
-    public Subject(String name, String start_date, String end_date, String dayOfWeek, String time, String squad, String classroom) {
+    public Subject(Integer id, String name, String start_date, String end_date, String dayOfWeek, String time, String squad, String classroom) {
+        this.id = id;
         this.name = name;
         this.start_date = start_date;
         this.end_date = end_date;
@@ -80,5 +82,13 @@ public class Subject {
 
     public void setClassroom(String classroom) {
         this.classroom = classroom;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

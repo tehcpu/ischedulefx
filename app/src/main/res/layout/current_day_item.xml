@@ -7,27 +7,41 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:stretchColumns="2">
+
+        <!-- sys vars -->
+        <TextView
+            android:id="@+id/subj_id"
+            android:visibility="gone"/>
+        <!-- end -->
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
+            android:weightSum="1"
             android:layout_marginRight="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#000"
                 android:text="Предмет:"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
+                android:textColor="#909090"
                 android:id="@+id/day_subject"
-                android:layout_column="1" />
+                android:layout_column="1"
+                android:textSize="18dp" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -39,15 +53,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#000"
                 android:text="Начало:"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
+                android:textColor="#909090"
                 android:id="@+id/day_start"
-                android:layout_column="1" />
+                android:layout_column="1"
+                android:textSize="18dp" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -59,15 +77,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#000"
                 android:text="Конец:"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
+                android:textColor="#909090"
                 android:id="@+id/day_end"
-                android:layout_column="1" />
+                android:layout_column="1"
+                android:textSize="18dp" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -79,16 +101,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#000"
                 android:text="День недели:"
                 android:layout_column="0"
-                android:layout_marginRight="15dp" />
+                android:layout_marginRight="15dp"
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
+                android:textColor="#909090"
                 android:id="@+id/day_day"
-                android:layout_column="1" />
+                android:layout_column="1"
+                android:textSize="18dp" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -100,15 +126,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#000"
                 android:text="Время:"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
+                android:textColor="#909090"
                 android:id="@+id/day_time"
-                android:layout_column="1" />
+                android:layout_column="1"
+                android:textSize="18dp" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -120,15 +150,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#000"
                 android:text="Группа:"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
+                android:textColor="#909090"
                 android:id="@+id/day_squad"
-                android:layout_column="1" />
+                android:layout_column="1"
+                android:textSize="18dp" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -140,16 +174,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#000"
                 android:text="Аудитория:"
                 android:id="@+id/textView"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
+                android:textColor="#909090"
                 android:id="@+id/day_classroom"
-                android:layout_column="1" />
+                android:layout_column="1"
+                android:textSize="18dp" />
         </TableRow>
     </TableLayout>
 </RelativeLayout>

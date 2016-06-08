@@ -77,7 +77,6 @@ public class MainTabActivity extends AppCompatActivity {
 
 			@Override
 			public JSONObject onFail(int code) {
-				Log.d("kek", "time left");
 				Toast.makeText(getApplicationContext(),
 						"Истекло время действия токена.. Пожалуйста, перелогиньтесь", Toast.LENGTH_LONG).show();
 				SharedPreferences sp = AppController.getInstance().getSharedPreferences(StringConstants.SCHEDULE_SHARED_PREFERENCES, Context.MODE_PRIVATE);
@@ -109,10 +108,6 @@ public class MainTabActivity extends AppCompatActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.menu_check:
-			Intent intent1 = new Intent(this, UpdateDialogActivity.class);
-			startActivity(intent1);
-			break;
 		case R.id.menu_exit:
 			AlertDialog alert = getExitAlertDialog();
 			alert.show();

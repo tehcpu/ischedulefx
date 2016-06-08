@@ -14,6 +14,7 @@ import ru.romanov.schedule.AppController;
 import ru.romanov.schedule.R;
 import ru.romanov.schedule.adapters.CurrentDayAdapter;
 import ru.romanov.schedule.adapters.ScheduleCheckListAdapter;
+import ru.romanov.schedule.adapters.UpdateAdapter;
 import ru.romanov.schedule.models.Subject;
 import ru.romanov.schedule.utils.ApiHolder;
 import ru.romanov.schedule.utils.MySubject;
@@ -90,7 +91,7 @@ public class UpdateListActivity extends Fragment {
 					}
 
 					if (listView != null) {
-						listView.setAdapter(new CurrentDayAdapter(AppController.getInstance().getApplicationContext(), subjects));
+						listView.setAdapter(new UpdateAdapter(AppController.getInstance().getApplicationContext(), subjects));
 					}
 				}
 				return null;
@@ -98,6 +99,23 @@ public class UpdateListActivity extends Fragment {
 
 			@Override
 			public JSONObject onFail(int code) {
+				if (code == 0) {
+					Toast.makeText(getContext(), "Не удалось получить данные от сервера, проверьте соединение.", Toast.LENGTH_LONG).show();
+				} else if (code == 1) {
+					Toast.makeText(getContext(), "Обновлений для вас не найдено.", Toast.LENGTH_LONG).show();
+				} else if (code == 2) {
+					Toast.makeText(getContext(),
+							"Истекло время действия токена.. Пожалуйста, перелогиньтесь", Toast.LENGTH_LONG).show();
+					SharedPreferences sp = AppController.getInstance().getSharedPreferences(StringConstants.SCHEDULE_SHARED_PREFERENCES, Context.MODE_PRIVATE);
+					SharedPreferences.Editor editor = sp.edit();
+					editor.putString(StringConstants.SHARED_LOGIN, null);
+					editor.putString(StringConstants.SHARED_PASS, null);
+					editor.putString(StringConstants.TOKEN, null);
+					editor.commit();
+					Intent myIntent = new Intent(getContext(), IScheduleActivity.class);
+					UpdateListActivity.this.startActivity(myIntent);
+					getActivity().finish();
+				}
 				return null;
 			}
 		});

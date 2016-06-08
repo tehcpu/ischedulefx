@@ -202,6 +202,18 @@ public class ApiHolder {
             @Override
             public void onErrorResponse(VolleyError error) {
                 callback.onFail(0);
+
+                if (error != null && error.networkResponse != null) {
+                    if (error.networkResponse.statusCode == 401) {
+                        SharedPreferences.Editor editor = mSharedPreferences.edit();
+                        editor.putString(StringConstants.SHARED_LOGIN, null);
+                        editor.putString(StringConstants.SHARED_PASS, null);
+                        editor.putString(StringConstants.TOKEN, null);
+                        editor.commit();
+                        callback.onFail(1);
+                    }
+                }
+
                 VolleyLog.d(TAG, "Error: " + error.getMessage());
             }
         }){
@@ -246,6 +258,18 @@ public class ApiHolder {
             @Override
             public void onErrorResponse(VolleyError error) {
                 callback.onFail(0);
+
+                if (error != null && error.networkResponse != null) {
+                    if (error.networkResponse.statusCode == 401) {
+                        SharedPreferences.Editor editor = mSharedPreferences.edit();
+                        editor.putString(StringConstants.SHARED_LOGIN, null);
+                        editor.putString(StringConstants.SHARED_PASS, null);
+                        editor.putString(StringConstants.TOKEN, null);
+                        editor.commit();
+                        callback.onFail(1);
+                    }
+                }
+
                 VolleyLog.d(TAG, "Error: " + error.getMessage());
             }
         }){
@@ -254,6 +278,60 @@ public class ApiHolder {
                 Map<String,String> params = new HashMap<String, String>();
                 params.put("access_token", mSharedPreferences.getString(StringConstants.TOKEN, null));
                 params.put("method", "loadUpdates");
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("Content-Type","application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+
+        AppController.getInstance().addToRequestQueue(sr);
+    }
+
+    public void sendFeedback(final JSONObject data, final onResponse callback) {
+        final SharedPreferences mSharedPreferences = AppController.getInstance().getSharedPreferences(StringConstants.SCHEDULE_SHARED_PREFERENCES, Context.MODE_PRIVATE);
+        StringRequest sr = new StringRequest(Request.Method.POST, StringConstants.MY_URI + "resource.php", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.length()>1) {
+                    try {
+                        callback.onSuccess(new JSONArray(response));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    callback.onFail(1);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onFail(0);
+
+                if (error != null && error.networkResponse != null) {
+                    if (error.networkResponse.statusCode == 401) {
+                        SharedPreferences.Editor editor = mSharedPreferences.edit();
+                        editor.putString(StringConstants.SHARED_LOGIN, null);
+                        editor.putString(StringConstants.SHARED_PASS, null);
+                        editor.putString(StringConstants.TOKEN, null);
+                        editor.commit();
+                        callback.onFail(1);
+                    }
+                }
+
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("access_token", mSharedPreferences.getString(StringConstants.TOKEN, null));
+                params.put("method", "sendFeedback");
+                params.put("data", data.toString());
                 return params;
             }
 
