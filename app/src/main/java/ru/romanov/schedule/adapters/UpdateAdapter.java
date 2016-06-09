@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -63,12 +65,14 @@ public class UpdateAdapter extends BaseAdapter {
         mViewHolder.dayTime.setText(currentListData.getTime());
         mViewHolder.daySquad.setText(currentListData.getSquad());
         mViewHolder.dayClassroom.setText(currentListData.getClassroom());
+        mViewHolder.subjId.setText(currentListData.getId()+"");
 
         return convertView;
     }
 
     private class MyViewHolder {
-        TextView daySubject, dayStart, dayEnd, dayDoW, dayTime, daySquad, dayClassroom;
+        RadioGroup choice;
+        TextView daySubject, dayStart, dayEnd, dayDoW, dayTime, daySquad, dayClassroom, subjId;
 
         public MyViewHolder(View item) {
             daySubject = (TextView) item.findViewById(R.id.day_subject);
@@ -78,6 +82,8 @@ public class UpdateAdapter extends BaseAdapter {
             dayTime = (TextView) item.findViewById(R.id.day_time);
             daySquad = (TextView) item.findViewById(R.id.day_squad);
             dayClassroom = (TextView) item.findViewById(R.id.day_classroom);
+            subjId = (TextView) item.findViewById(R.id.subj_id);
+            choice = (RadioGroup) item.findViewById(R.id.update_opinion);
         }
     }
 }

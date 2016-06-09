@@ -37,12 +37,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class UpdateListActivity extends Fragment {
 
 	private List<MySubject> newSubjects;
-	private ScheduleCheckListAdapter adapter;
+	private UpdateAdapter adapter;
 	private String token;
 	private View v;
 	private ListView listView;
@@ -59,7 +61,15 @@ public class UpdateListActivity extends Fragment {
 		super.onStart();
 
 		final ProgressBar progressBar = (ProgressBar) v.findViewById(R.id.progressBar);
-		final ListView listView = (ListView) v.findViewById(R.id.list_updates_item);
+		listView = (ListView) v.findViewById(R.id.list_updates_item);
+		Button push = (Button) v.findViewById(R.id.check_confirm_button);
+
+		push.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				sendFeedback();
+			}
+		});
 
 		final String[] days = {"Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"};
 
@@ -79,6 +89,7 @@ public class UpdateListActivity extends Fragment {
 							JSONObject subjObject = array.getJSONObject(i);
 							Subject subject = new Subject();
 
+							subject.setId(subjObject.getInt("id"));
 							subject.setName(subjObject.getString("name"));
 							subject.setStart_date(subjObject.getString("start_date"));
 							subject.setEnd_date(subjObject.getString("end_date"));
@@ -94,7 +105,8 @@ public class UpdateListActivity extends Fragment {
 					}
 
 					if (listView != null) {
-						listView.setAdapter(new UpdateAdapter(AppController.getInstance().getApplicationContext(), subjects));
+						adapter = new UpdateAdapter(AppController.getInstance().getApplicationContext(), subjects);
+						listView.setAdapter(adapter);
 					}
 				}
 				return null;
@@ -124,5 +136,30 @@ public class UpdateListActivity extends Fragment {
 			}
 		});
 
+	}
+
+	public void sendFeedback() {
+		JSONArray data = new JSONArray();
+		for (int i=0; i < listView.getCount(); i++) {
+			View aim = getViewByPosition(i, listView);
+			TextView id = (TextView) aim.findViewById(R.id.subj_id);
+			RadioGroup choice = (RadioGroup) aim.findViewById(R.id.update_opinion);
+
+			int out = choice.indexOfChild(v.findViewById(choice.getCheckedRadioButtonId()));
+
+			Log.d(TAG, out+" <-- choice");
+		}
+	}
+
+	public View getViewByPosition(int pos, ListView listView) {
+		final int firstListItemPosition = listView.getFirstVisiblePosition();
+		final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
+
+		if (pos < firstListItemPosition || pos > lastListItemPosition ) {
+			return listView.getAdapter().getView(pos, null, listView);
+		} else {
+			final int childIndex = pos - firstListItemPosition;
+			return listView.getChildAt(childIndex);
+		}
 	}
 }

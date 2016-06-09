@@ -4,39 +4,41 @@
     api-level="23"
     density="420dpi"
     format="7"
-    timestamp="1465401579263318000" >
+    timestamp="1465504341939702000" >
 
     <task
         name="javac"
-        duration="239" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="27" />
+        duration="0" />
     <task
         name="verifier"
-        duration="2" />
+        duration="0" />
 
-    <artifact
-        location="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
-        type="DEX" />
-
-    <build timestamp="1465401221792821000" >
+    <build timestamp="1465500675953744000" >
         <artifact
             location="/Users/codebreak/Downloads/ischedulefx 2/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
     </build>
-    <build timestamp="1465401331522286000" >
+    <build timestamp="1465503548430829000" >
+        <artifact
+            location="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1/classes.dex"
+            type="DEX" />
+    </build>
+    <build timestamp="1465504076701997000" >
         <artifact
             location="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/resources-debug.ap_"
             type="RESOURCES" />
     </build>
-    <build timestamp="1465401579263318000" >
+    <build timestamp="1465504271434974000" >
         <artifact
             location="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
             type="DEX" />
     </build>
+    <build timestamp="1465504341939702000" />
 
 </instant-run>
