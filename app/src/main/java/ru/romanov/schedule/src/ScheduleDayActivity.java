@@ -3,8 +3,10 @@ package ru.romanov.schedule.src;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
@@ -17,6 +19,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 import ru.romanov.schedule.AppController;
 import ru.romanov.schedule.R;
@@ -77,6 +80,9 @@ public class ScheduleDayActivity extends AppCompatActivity {
                         }
                     }
 
+                    // fix order
+                    sortSchedule(subjects);
+
                     if (listView != null) {
                         listView.setAdapter(new CurrentDayAdapter(AppController.getInstance().getApplicationContext(), subjects));
                     }
@@ -107,5 +113,25 @@ public class ScheduleDayActivity extends AppCompatActivity {
                 return null;
             }
         });
+    }
+
+    // for kitkat and up
+
+    void sortSchedule(ArrayList<Subject> arr) {
+        for (int i = arr.size() - 1; i >= 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (arr.get(j).getTime() != null) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                        if (Objects.equals(arr.get(j).getTime().substring(0, 2), "9:")) arr.get(j).setTime("0"+arr.get(j).getTime());
+                        if (Objects.equals(arr.get(j + 1).getTime().substring(0, 2), "9:")) arr.get(j+1).setTime("0"+arr.get(j+1).getTime());
+                        if (Integer.parseInt(arr.get(j).getTime().substring(0, 2)) > Integer.parseInt(arr.get(j + 1).getTime().substring(0, 2))) {
+                            Subject t = arr.get(j);
+                            arr.set(j, arr.get(j + 1));
+                            arr.set(j + 1, t);
+                        }
+                    }
+                }
+            }
+        }
     }
 }

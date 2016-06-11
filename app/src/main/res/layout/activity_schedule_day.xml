@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ru.romanov.schedule.src.ScheduleDayActivity">
-
 <ListView
     android:id="@+id/subjects_list"
     android:layout_width="match_parent"

@@ -1,7 +1,9 @@
 package ru.romanov.schedule.utils;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import ru.romanov.schedule.AppController;
 
@@ -241,6 +244,7 @@ public class ApiHolder {
     public void loadUpdates(final onResponse callback) {
         final SharedPreferences mSharedPreferences = AppController.getInstance().getSharedPreferences(StringConstants.SCHEDULE_SHARED_PREFERENCES, Context.MODE_PRIVATE);
         StringRequest sr = new StringRequest(Request.Method.POST, StringConstants.MY_URI + "resource.php", new Response.Listener<String>() {
+            @TargetApi(Build.VERSION_CODES.KITKAT)
             @Override
             public void onResponse(String response) {
                 Log.d(TAG, "curr_day --> APi "+response);
@@ -250,6 +254,8 @@ public class ApiHolder {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+                } else if (Objects.equals(response, "0")) {
+                    callback.onFail(1);
                 } else {
                     callback.onFail(1);
                 }
@@ -292,19 +298,16 @@ public class ApiHolder {
         AppController.getInstance().addToRequestQueue(sr);
     }
 
-    public void sendFeedback(final JSONObject data, final onResponse callback) {
+    public void sendFeedback(final JSONArray data, final onResponse callback) {
         final SharedPreferences mSharedPreferences = AppController.getInstance().getSharedPreferences(StringConstants.SCHEDULE_SHARED_PREFERENCES, Context.MODE_PRIVATE);
         StringRequest sr = new StringRequest(Request.Method.POST, StringConstants.MY_URI + "resource.php", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if (response.length()>1) {
-                    try {
-                        callback.onSuccess(new JSONArray(response));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    callback.onFail(1);
+                Log.d(TAG, "trash -- >"+response);
+                try {
+                    callback.onSuccess(new JSONObject(response));
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {

@@ -7,8 +7,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
+import ru.romanov.schedule.AppController;
 import ru.romanov.schedule.R;
 import ru.romanov.schedule.utils.MySubject;
 import ru.romanov.schedule.utils.MySubjectUpdateManager;
@@ -18,6 +20,7 @@ import ru.romanov.schedule.utils.SubjectToRemove;
 import ru.romanov.schedule.utils.XMLParser;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -238,9 +241,9 @@ public class UpdateDialogActivity extends Activity implements OnClickListener {
 						}
 					}
 					editor.commit();
-					editor = getSharedPreferences(StringConstants.SCHEDULE_SHARED_PREFERENCES, MODE_PRIVATE).edit();
+					editor = AppController.getInstance().getSharedPreferences(StringConstants.SCHEDULE_SHARED_PREFERENCES, Context.MODE_PRIVATE).edit();
 					Calendar calend = Calendar.getInstance();
-					SimpleDateFormat sdf = new SimpleDateFormat(XMLParser.MY_LONG_DATE_FORMAT);
+					SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.dd  kk:mm", Locale.ROOT);
 					String time = sdf.format(calend.getTime());
 					editor.putString(StringConstants.SHARED_LAST_SYNC_DATE, time);
 					editor.commit();

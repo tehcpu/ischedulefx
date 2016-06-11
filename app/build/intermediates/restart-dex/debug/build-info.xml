@@ -1,44 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="arm64-v8a,armeabi-v7a,armeabi"
-    api-level="23"
+    abi="x86_64,x86"
+    api-level="24"
     density="420dpi"
     format="7"
-    timestamp="1465504341939702000" >
+    timestamp="1465666202007490000" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="170" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="17" />
     <task
         name="verifier"
-        duration="0" />
+        duration="4" />
 
-    <build timestamp="1465500675953744000" >
+    <artifact
+        location="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
+        type="DEX" />
+
+    <build timestamp="1465664580528658000" >
         <artifact
             location="/Users/codebreak/Downloads/ischedulefx 2/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
     </build>
-    <build timestamp="1465503548430829000" >
+    <build timestamp="1465666035592365000" >
         <artifact
-            location="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1/classes.dex"
+            location="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_9/classes.dex"
             type="DEX" />
     </build>
-    <build timestamp="1465504076701997000" >
-        <artifact
-            location="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/resources-debug.ap_"
-            type="RESOURCES" />
-    </build>
-    <build timestamp="1465504271434974000" >
+    <build timestamp="1465666202007490000" >
         <artifact
             location="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
             type="DEX" />
     </build>
-    <build timestamp="1465504341939702000" />
 
 </instant-run>

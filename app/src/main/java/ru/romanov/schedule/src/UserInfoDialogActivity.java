@@ -41,6 +41,5 @@ public class UserInfoDialogActivity extends Activity implements OnClickListener{
 	@Override
 	public void onClick(View arg0) {
 		finish();
-		
 	}
 }

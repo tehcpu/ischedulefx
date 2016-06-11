@@ -47,7 +47,7 @@ public class UpdateAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        MyViewHolder mViewHolder;
+        final MyViewHolder mViewHolder;
 
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.update_list_item, parent, false);
@@ -57,7 +57,7 @@ public class UpdateAdapter extends BaseAdapter {
             mViewHolder = (MyViewHolder) convertView.getTag();
         }
 
-        Subject currentListData = getItem(position);
+        final Subject currentListData = getItem(position);
         mViewHolder.daySubject.setText(currentListData.getName());
         mViewHolder.dayStart.setText(currentListData.getStart_date());
         mViewHolder.dayEnd.setText(currentListData.getEnd_date());
@@ -66,11 +66,19 @@ public class UpdateAdapter extends BaseAdapter {
         mViewHolder.daySquad.setText(currentListData.getSquad());
         mViewHolder.dayClassroom.setText(currentListData.getClassroom());
         mViewHolder.subjId.setText(currentListData.getId()+"");
+        mViewHolder.choice.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                currentListData.setChecked(checkedId);
+            }
+        });
+        mViewHolder.choice.check(currentListData.getChecked());
 
         return convertView;
     }
 
     private class MyViewHolder {
+        int checked;
         RadioGroup choice;
         TextView daySubject, dayStart, dayEnd, dayDoW, dayTime, daySquad, dayClassroom, subjId;
 
@@ -84,6 +92,7 @@ public class UpdateAdapter extends BaseAdapter {
             dayClassroom = (TextView) item.findViewById(R.id.day_classroom);
             subjId = (TextView) item.findViewById(R.id.subj_id);
             choice = (RadioGroup) item.findViewById(R.id.update_opinion);
+            checked = choice.getCheckedRadioButtonId();
         }
     }
 }

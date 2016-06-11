@@ -8,12 +8,12 @@
         "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_activity_chooser_view.xml"
     },
     {
-        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
-        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_screen_toolbar.xml"
-    },
-    {
         "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/schedule_item_element.xml",
         "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/layout/schedule_item_element.xml"
+    },
+    {
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_screen_toolbar.xml"
     },
     {
         "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
@@ -24,12 +24,12 @@
         "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_action_mode_bar.xml"
     },
     {
-        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
-        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_search_dropdown_item_icons_2line.xml"
-    },
-    {
         "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",
         "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_search_dropdown_item_icons_2line.xml"
     },
     {
         "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/list_activity_layout.xml",
@@ -68,16 +68,16 @@
         "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/notification_template_part_chronometer.xml"
     },
     {
-        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/notification_media_action.xml",
-        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/notification_media_action.xml"
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/notification_template_big_media_narrow.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/notification_template_big_media_narrow.xml"
     },
     {
         "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/current_day_item.xml",
         "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/layout/current_day_item.xml"
     },
     {
-        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/notification_template_big_media_narrow.xml",
-        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/notification_template_big_media_narrow.xml"
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/notification_media_action.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/notification_media_action.xml"
     },
     {
         "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
@@ -100,12 +100,12 @@
         "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/layout/update_dialog_background.xml"
     },
     {
-        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
-        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_screen_simple_overlay_action_mode.xml"
-    },
-    {
         "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/select_dialog_multichoice_material.xml",
         "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_screen_simple_overlay_action_mode.xml"
     },
     {
         "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
@@ -140,36 +140,36 @@
         "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_list_menu_item_checkbox.xml"
     },
     {
-        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/check_list_activity_layout.xml",
-        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/layout/check_list_activity_layout.xml"
-    },
-    {
         "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/main.xml",
         "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/layout/main.xml"
+    },
+    {
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/check_list_activity_layout.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/layout/check_list_activity_layout.xml"
     },
     {
         "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/notification_template_lines.xml",
         "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/notification_template_lines.xml"
     },
     {
-        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/update_list_item.xml",
-        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/layout/update_list_item.xml"
-    },
-    {
         "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/activity_schedule_day.xml",
         "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/layout/activity_schedule_day.xml"
     },
     {
-        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
-        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_search_view.xml"
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/update_list_item.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/layout/update_list_item.xml"
+    },
+    {
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_list_menu_item_layout.xml"
     },
     {
         "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
         "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_screen_simple.xml"
     },
     {
-        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
-        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_list_menu_item_layout.xml"
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_search_view.xml"
     },
     {
         "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/info_dialog_layout.xml",
@@ -180,16 +180,16 @@
         "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_action_menu_item_layout.xml"
     },
     {
-        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/notification_template_big_media.xml",
-        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/notification_template_big_media.xml"
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/schedule_list_item.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/layout/schedule_list_item.xml"
     },
     {
         "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/abc_select_dialog_material.xml",
         "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_select_dialog_material.xml"
     },
     {
-        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/schedule_list_item.xml",
-        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/layout/schedule_list_item.xml"
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/notification_template_big_media.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/notification_template_big_media.xml"
     },
     {
         "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",

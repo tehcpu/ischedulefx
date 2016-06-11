@@ -1,10 +1,14 @@
 package ru.romanov.schedule.src;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,6 +24,8 @@ import ru.romanov.schedule.utils.ApiHolder;
 import ru.romanov.schedule.utils.MySubject;
 import ru.romanov.schedule.utils.RequestStringsCreater;
 import ru.romanov.schedule.utils.StringConstants;
+import ru.romanov.schedule.utils.XMLParser;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ListActivity;
@@ -27,6 +33,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -49,6 +56,7 @@ public class UpdateListActivity extends Fragment {
 	private View v;
 	private ListView listView;
 	private String TAG = "UpdatesActivity";
+	private String[] days = {"Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"};
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -71,7 +79,6 @@ public class UpdateListActivity extends Fragment {
 			}
 		});
 
-		final String[] days = {"Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"};
 
 		ApiHolder.getInstance().loadUpdates(new ApiHolder.onResponse() {
 			@Override
@@ -104,10 +111,22 @@ public class UpdateListActivity extends Fragment {
 						}
 					}
 
+					// fix order (bubble)
+					sortSchedule(subjects);
+					sortScheduleDay(subjects);
+
 					if (listView != null) {
 						adapter = new UpdateAdapter(AppController.getInstance().getApplicationContext(), subjects);
 						listView.setAdapter(adapter);
 					}
+
+					SharedPreferences sp = AppController.getInstance().getSharedPreferences(StringConstants.SCHEDULE_SHARED_PREFERENCES, Context.MODE_PRIVATE);
+					SharedPreferences.Editor editor = sp.edit();
+					Calendar calend = Calendar.getInstance();
+					SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.YYYY  kk:mm", Locale.ROOT);
+					String time = sdf.format(calend.getTime());
+					editor.putString(StringConstants.SHARED_LAST_SYNC_DATE, time);
+					editor.commit();
 				}
 				return null;
 			}
@@ -116,9 +135,12 @@ public class UpdateListActivity extends Fragment {
 			public JSONObject onFail(int code) {
 				progressBar.setVisibility(View.GONE);
 				if (code == 0) {
-					Toast.makeText(getContext(), "Не удалось получить данные от сервера, проверьте соединение.", Toast.LENGTH_LONG).show();
+					Toast.makeText(getContext().getApplicationContext(), "Не удалось получить данные от сервера, проверьте соединение.", Toast.LENGTH_LONG).show();
 				} else if (code == 1) {
 					Toast.makeText(getContext(), "Обновлений для вас не найдено.", Toast.LENGTH_LONG).show();
+					adapter = new UpdateAdapter(getContext(), new ArrayList());
+					listView.setAdapter(adapter);
+					adapter.notifyDataSetChanged();
 				} else if (code == 2) {
 					Toast.makeText(getContext(),
 							"Истекло время действия токена.. Пожалуйста, перелогиньтесь", Toast.LENGTH_LONG).show();
@@ -140,26 +162,90 @@ public class UpdateListActivity extends Fragment {
 
 	public void sendFeedback() {
 		JSONArray data = new JSONArray();
-		for (int i=0; i < listView.getCount(); i++) {
-			View aim = getViewByPosition(i, listView);
-			TextView id = (TextView) aim.findViewById(R.id.subj_id);
-			RadioGroup choice = (RadioGroup) aim.findViewById(R.id.update_opinion);
+		if (adapter != null) {
+			for (int i = 0; i < adapter.getCount(); i++) {
+				if (adapter.getItem(i).getChecked() != 0) {
+					//Log.d(TAG, "check it out --> " + getResources().getResourceEntryName(v.findViewById(adapter.getItem(i).getChecked()).getId()) + " | " + adapter.getItem(i).getId());
+					JSONObject obj = new JSONObject();
+					try {
+						obj.put("id", adapter.getItem(i).getId());
+						obj.put("choice", getResources().getResourceEntryName(v.findViewById(adapter.getItem(i).getChecked()).getId()));
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+					data.put(obj.toString());
+				}
+			}
+		}
 
-			int out = choice.indexOfChild(v.findViewById(choice.getCheckedRadioButtonId()));
 
-			Log.d(TAG, out+" <-- choice");
+		Log.d(TAG, "json --> "+data+"--> lvc "+listView.getCount());
+
+		if (data.length() > 0) {
+
+			ApiHolder.getInstance().sendFeedback(data, new ApiHolder.onResponse() {
+				@Override
+				public JSONObject onSuccess(Object response) {
+					Toast.makeText(getContext().getApplicationContext(), "Данные успешно отправлены.", Toast.LENGTH_LONG).show();
+					adapter = new UpdateAdapter(getContext(), new ArrayList());
+					onStart();
+					return null;
+				}
+
+				@Override
+				public JSONObject onFail(int code) {
+					if (code == 0) {
+						Toast.makeText(getContext().getApplicationContext(), "Не удалось получить данные от сервера, проверьте соединение.", Toast.LENGTH_LONG).show();
+					} else if (code == 1) {
+						//Toast.makeText(getContext(), "Обновлений для вас не найдено.", Toast.LENGTH_LONG).show();
+					} else if (code == 2) {
+						Toast.makeText(getContext(),
+								"Истекло время действия токена.. Пожалуйста, перелогиньтесь", Toast.LENGTH_LONG).show();
+						SharedPreferences sp = AppController.getInstance().getSharedPreferences(StringConstants.SCHEDULE_SHARED_PREFERENCES, Context.MODE_PRIVATE);
+						SharedPreferences.Editor editor = sp.edit();
+						editor.putString(StringConstants.SHARED_LOGIN, null);
+						editor.putString(StringConstants.SHARED_PASS, null);
+						editor.putString(StringConstants.TOKEN, null);
+						editor.commit();
+						Intent myIntent = new Intent(getContext(), IScheduleActivity.class);
+						UpdateListActivity.this.startActivity(myIntent);
+						getActivity().finish();
+					}
+					return null;
+				}
+			});
 		}
 	}
 
-	public View getViewByPosition(int pos, ListView listView) {
-		final int firstListItemPosition = listView.getFirstVisiblePosition();
-		final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
+	void sortSchedule(ArrayList<Subject> arr) {
+		for (int i = arr.size() - 1; i >= 0; i--) {
+			for (int j = 0; j < i; j++) {
+				if (arr.get(j).getTime() != null) {
+					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+						if (Objects.equals(arr.get(j).getTime().substring(0, 2), "9:")) arr.get(j).setTime("0"+arr.get(j).getTime());
+						if (Objects.equals(arr.get(j + 1).getTime().substring(0, 2), "9:")) arr.get(j+1).setTime("0"+arr.get(j+1).getTime());
+						if (Integer.parseInt(arr.get(j).getTime().substring(0, 2)) > Integer.parseInt(arr.get(j + 1).getTime().substring(0, 2))) {
+							Subject t = arr.get(j);
+							arr.set(j, arr.get(j + 1));
+							arr.set(j + 1, t);
+						}
+					}
+				}
+			}
+		}
+	}
 
-		if (pos < firstListItemPosition || pos > lastListItemPosition ) {
-			return listView.getAdapter().getView(pos, null, listView);
-		} else {
-			final int childIndex = pos - firstListItemPosition;
-			return listView.getChildAt(childIndex);
+	void sortScheduleDay(ArrayList<Subject> arr) {
+		for (int i = arr.size() - 1; i >= 0; i--) {
+			for (int j = 0; j < i; j++) {
+				if (arr.get(j).getDayOfWeek() != null) {
+					if (Arrays.asList(days).indexOf(arr.get(j).getDayOfWeek()) > Arrays.asList(days).indexOf(arr.get(j+1).getDayOfWeek())) {
+						Subject t = arr.get(j);
+						arr.set(j, arr.get(j + 1));
+						arr.set(j + 1, t);
+					}
+				}
+			}
 		}
 	}
 }

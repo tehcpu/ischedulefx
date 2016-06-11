@@ -13,6 +13,7 @@ public class Subject {
     private String time;
     private String squad;
     private String classroom;
+    private int checked;
 
     public Subject() {
     }
@@ -90,5 +91,13 @@ public class Subject {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public void setChecked(int id) {
+        checked = id;
+    }
+
+    public int getChecked() {
+        return checked;
     }
 }

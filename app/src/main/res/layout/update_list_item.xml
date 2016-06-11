@@ -13,7 +13,7 @@
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     android:paddingTop="5dp"
-    android:padding="5dp">
+    android:paddingBottom="5dp">
         <!-- sys vars -->
         <TextView
             android:id="@+id/subj_id"
@@ -32,7 +32,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="5dp"
-        android:padding="5dp">
+        android:paddingBottom="5dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="5dp"
-        android:padding="5dp">
+        android:paddingBottom="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -99,7 +99,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="5dp"
-        android:padding="5dp">
+        android:paddingBottom="5dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="5dp"
-        android:padding="5dp">
+        android:paddingBottom="5dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -169,7 +169,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="5dp"
-        android:padding="5dp">
+        android:paddingBottom="5dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -204,7 +204,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="5dp"
-        android:padding="5dp">
+        android:paddingBottom="5dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -241,7 +241,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="5dp"
-        android:padding="5dp">
+        android:paddingBottom="5dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -283,14 +283,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:id="@+id/update_opinion"
-            android:gravity="center">
+            android:gravity="center"
+            android:checkedButton="@+id/radio_accept">
         <RadioButton android:id="@+id/radio_accept"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Принять"
             android:textColor="#000"
             android:layout_marginRight="20dp"
-            android:checked="true"/>
+            android:checked="false"/>
         <RadioButton android:id="@+id/radio_decline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -40,6 +40,7 @@ import org.json.JSONObject;
 
 public class MainTabActivity extends AppCompatActivity {
 
+	private static final String TAG = "MainTabActivity";
 	TextView lastSyncTV;
 	private FragmentTabHost mTabHost;
 
@@ -61,14 +62,13 @@ public class MainTabActivity extends AppCompatActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		String lastSync = AppController.getInstance().getSharedPreferences(
-				StringConstants.SCHEDULE_SHARED_PREFERENCES, MODE_PRIVATE)
-				.getString(StringConstants.SHARED_LAST_SYNC_DATE, null);
+		SharedPreferences sp = AppController.getInstance().getSharedPreferences(StringConstants.SCHEDULE_SHARED_PREFERENCES, Context.MODE_PRIVATE);
+		String lastSync = sp.getString(StringConstants.SHARED_LAST_SYNC_DATE, null);
+		Log.d(TAG, lastSync+"<-- right here");
 		if(lastSync==null)
 			lastSyncTV.setText("-");
 		else
 			lastSyncTV.setText(lastSync);
-		Log.d("kek", "time left");
 		ApiHolder.getInstance().validateToken(new ApiHolder.onResponse() {
 			@Override
 			public JSONObject onSuccess(Object response) {
