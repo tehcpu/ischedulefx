@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="x86_64"
+    abi="x86_64,x86"
     api-level="24"
     density="420dpi"
     format="7"
-    timestamp="1465796977742472000" >
+    timestamp="79687952475675" >
 
     <task
         name="javac"
-        duration="425" />
+        duration="1721" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="467" />
+        duration="422" />
     <task
         name="verifier"
-        duration="38" />
+        duration="49" />
 
     <artifact
-        location="/Users/codebreak/Downloads/ischedulefx 2/app/build/outputs/apk/app-debug.apk"
+        location="/Users/codebreak/Downloads/ischedulefx 2 copy/app/build/outputs/apk/app-debug.apk"
         type="MAIN" />
 
-    <build timestamp="1465796977742472000" >
+    <build timestamp="79687952475675" >
         <artifact
-            location="/Users/codebreak/Downloads/ischedulefx 2/app/build/outputs/apk/app-debug.apk"
+            location="/Users/codebreak/Downloads/ischedulefx 2 copy/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
     </build>
 

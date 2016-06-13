@@ -1,6 +1,10 @@
 [
     {
-        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/drawable-ldpi-v4/ic_launcher.png",
-        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/drawable-ldpi/ic_launcher.png"
+        "merged": "/Users/codebreak/Downloads/ischedulefx-master/app/build/intermediates/res/merged/debug/drawable-ldpi-v4/ic_launcher.png",
+        "source": "/Users/codebreak/Downloads/ischedulefx-master/app/src/main/res/drawable-ldpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2 copy/app/build/intermediates/res/merged/debug/drawable-ldpi-v4/ic_launcher.png",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2 copy/app/src/main/res/drawable-ldpi/ic_launcher.png"
     }
 ]

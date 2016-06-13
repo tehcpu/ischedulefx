@@ -2,67 +2,123 @@
 <items version="2" >
 
     <item
-        jar="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
-        <dex dex="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-23.4.0_95c78a9b8122b212fd5d7285ec81391d68a798f6/classes.dex" />
-    </item>
-    <item
-        jar="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/libs/internal_impl-23.4.0.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
-        <dex dex="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.4.0_ba351668d3aaecab65090698c0b9760359cb330a/classes.dex" />
-    </item>
-    <item
         jar="/Users/codebreak/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.4.0/support-annotations-23.4.0.jar"
         jumboMode="true"
         revision="23.0.2"
         sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
-        <dex dex="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.4.0_561f17bbdfc56e4e03b015ab88d698fb941b3f86/classes.dex" />
+        <dex dex="/Users/codebreak/Downloads/ischedulefx-master/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.4.0_561f17bbdfc56e4e03b015ab88d698fb941b3f86/classes.dex" />
     </item>
     <item
-        jar="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="/Users/codebreak/Downloads/ischedulefx-master/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         revision="23.0.2"
-        sha1="3bf50030629fa327607886e00e2fc081ecfe18ba">
-        <dex dex="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_2dc5eaea1a925408816a018bf387bac7666649a1/classes.dex" />
+        sha1="5dcadb314df0062cb0a13f86dff1e9fbfc8c5fd3">
+        <dex dex="/Users/codebreak/Downloads/ischedulefx-master/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_1d0bc503059957a3631b5d57a382d7926c8a25ca/classes.dex" />
     </item>
     <item
-        jar="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jar="/Users/codebreak/Downloads/ischedulefx-master/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/libs/internal_impl-23.4.0.jar"
         jumboMode="true"
         revision="23.0.2"
-        sha1="487c9cf75791ab38b5b95e886503c62fb4b7329e">
-        <dex dex="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_d41756285388ecdf5832ecf8fd07a39792106ff5/classes.dex" />
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="/Users/codebreak/Downloads/ischedulefx-master/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.4.0_686ec321f4787e6318a5ab96f228898fe90d175d/classes.dex" />
     </item>
     <item
-        jar="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/classes.jar"
+        jar="/Users/codebreak/Downloads/ischedulefx-master/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/jars/classes.jar"
         jumboMode="true"
         revision="23.0.2"
-        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
-        <dex dex="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.4.0_6426711a2e4ea2ca25bf32d3cdfbcddb0044b2df/classes.dex" />
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="/Users/codebreak/Downloads/ischedulefx-master/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-23.4.0_4b9f5728860fe9d69acb79dfecefeda824b46972/classes.dex" />
     </item>
     <item
-        jar="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.volley/volley/1.0.0/jars/classes.jar"
+        jar="/Users/codebreak/Downloads/ischedulefx 2 copy/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/jars/classes.jar"
         jumboMode="true"
         revision="23.0.2"
-        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
-        <dex dex="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.volley-volley-1.0.0_b259c117639f3ac974a5086221169999f6a3fb5c/classes.dex" />
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="/Users/codebreak/Downloads/ischedulefx 2 copy/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-23.4.0_b99e5200520938d534f8aed26bdbc57d24542de3/classes.dex" />
     </item>
     <item
-        jar="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
-        <dex dex="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-23.4.0_f16338c3e92ec5d5235c551b09196b7c3e791f55/classes.dex" />
-    </item>
-    <item
-        jar="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/jars/classes.jar"
+        jar="/Users/codebreak/Downloads/ischedulefx-master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/jars/classes.jar"
         jumboMode="true"
         revision="23.0.2"
         sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
-        <dex dex="/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.4.0_e940b9a24cde66c0941f2acb02b7bcc39c1b6f99/classes.dex" />
+        <dex dex="/Users/codebreak/Downloads/ischedulefx-master/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.4.0_2f2ac575bfd1cc9e4d76a78ba72f595fed2ed8e5/classes.dex" />
+    </item>
+    <item
+        jar="/Users/codebreak/Downloads/ischedulefx 2 copy/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="/Users/codebreak/Downloads/ischedulefx 2 copy/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.4.0_90e72bb76dab868d2f5640a39136e976aad0ca9c/classes.dex" />
+    </item>
+    <item
+        jar="/Users/codebreak/Downloads/ischedulefx-master/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="/Users/codebreak/Downloads/ischedulefx-master/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.4.0_33d7363b3783bf0792cfe3b1bc79f22394d5572a/classes.dex" />
+    </item>
+    <item
+        jar="/Users/codebreak/Downloads/ischedulefx-master/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="/Users/codebreak/Downloads/ischedulefx-master/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-23.4.0_586f2426229ab365d2d96d8220979b03751dbfb0/classes.dex" />
+    </item>
+    <item
+        jar="/Users/codebreak/Downloads/ischedulefx 2 copy/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ca212a425236db5905f04f58b1305c252aa5d8df">
+        <dex dex="/Users/codebreak/Downloads/ischedulefx 2 copy/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_6405d572411790a5ea402c5de03d74a3f0031d75/classes.dex" />
+    </item>
+    <item
+        jar="/Users/codebreak/Downloads/ischedulefx 2 copy/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="/Users/codebreak/Downloads/ischedulefx 2 copy/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-23.4.0_5bf6fb938833e9b2543c2eb6299d2d689bb7b736/classes.dex" />
+    </item>
+    <item
+        jar="/Users/codebreak/Downloads/ischedulefx-master/app/build/intermediates/exploded-aar/com.android.volley/volley/1.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
+        <dex dex="/Users/codebreak/Downloads/ischedulefx-master/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.volley-volley-1.0.0_0f7875eeea67e66b3520ddc56c1bf974b5f2f032/classes.dex" />
+    </item>
+    <item
+        jar="/Users/codebreak/Downloads/ischedulefx-master/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ebb9e812d915568922ba3b600c4e287cd26114a1">
+        <dex dex="/Users/codebreak/Downloads/ischedulefx-master/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_48971eff2632aa92beb7273f02ecd39c45675e7e/classes.dex" />
+    </item>
+    <item
+        jar="/Users/codebreak/Downloads/ischedulefx 2 copy/app/build/intermediates/exploded-aar/com.android.volley/volley/1.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
+        <dex dex="/Users/codebreak/Downloads/ischedulefx 2 copy/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.volley-volley-1.0.0_2c4aa811e23eab900092145f22895af780c62b26/classes.dex" />
+    </item>
+    <item
+        jar="/Users/codebreak/Downloads/ischedulefx 2 copy/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/libs/internal_impl-23.4.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="/Users/codebreak/Downloads/ischedulefx 2 copy/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.4.0_7cb13f5e73253b16749ed4eeecf9e23d681959ee/classes.dex" />
+    </item>
+    <item
+        jar="/Users/codebreak/Downloads/ischedulefx 2 copy/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="7326b33c70e7aab6a08739227a92998b690bd20e">
+        <dex dex="/Users/codebreak/Downloads/ischedulefx 2 copy/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_f8d1eca74ba68766402ac7927f0d006543ace600/classes.dex" />
+    </item>
+    <item
+        jar="/Users/codebreak/Downloads/ischedulefx 2 copy/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="/Users/codebreak/Downloads/ischedulefx 2 copy/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.4.0_9c16444964460a076c3955e6e846e104a3352631/classes.dex" />
     </item>
 
 </items>

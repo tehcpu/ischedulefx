@@ -11,12 +11,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="ru.romanov.schedule.AppController"
+        android:name="ru.trohimchuk.schedule.AppController"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat.Light" >
         <activity
-            android:name="ru.romanov.schedule.src.IScheduleActivity"
+            android:name="ru.trohimchuk.schedule.src.IScheduleActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustNothing" >
             <intent-filter>
@@ -25,10 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="ru.romanov.schedule.src.MainTabActivity" />
-        <activity android:name="ru.romanov.schedule.src.UpdateDialogActivity" />
-        <activity android:name="ru.romanov.schedule.src.UserInfoDialogActivity" />
-        <activity android:name="ru.romanov.schedule.src.ScheduleDayActivity" />
+        <activity android:name="ru.trohimchuk.schedule.src.MainTabActivity" />
+        <activity android:name="ru.trohimchuk.schedule.src.UpdateDialogActivity" />
+        <activity android:name="ru.trohimchuk.schedule.src.UserInfoDialogActivity" />
+        <activity android:name="ru.trohimchuk.schedule.src.ScheduleDayActivity" />
     </application>
 
 </manifest>

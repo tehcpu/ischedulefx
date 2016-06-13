@@ -1,6 +1,10 @@
 [
     {
-        "merged": "/Users/codebreak/Downloads/ischedulefx 2/app/build/intermediates/res/merged/debug/menu/main_menu.xml",
-        "source": "/Users/codebreak/Downloads/ischedulefx 2/app/src/main/res/menu/main_menu.xml"
+        "merged": "/Users/codebreak/Downloads/ischedulefx-master/app/build/intermediates/res/merged/debug/menu/main_menu.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx-master/app/src/main/res/menu/main_menu.xml"
+    },
+    {
+        "merged": "/Users/codebreak/Downloads/ischedulefx 2 copy/app/build/intermediates/res/merged/debug/menu/main_menu.xml",
+        "source": "/Users/codebreak/Downloads/ischedulefx 2 copy/app/src/main/res/menu/main_menu.xml"
     }
 ]
