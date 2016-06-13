@@ -1,42 +1,26 @@
 package ru.romanov.schedule.src;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Map;
-
-
-import ru.romanov.schedule.AppController;
-import ru.romanov.schedule.R;
-import ru.romanov.schedule.utils.ApiHolder;
-import ru.romanov.schedule.utils.RequestStringsCreater;
-import ru.romanov.schedule.utils.StringConstants;
-import ru.romanov.schedule.utils.XMLParser;
-
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.app.TabActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONObject;
+
+import ru.romanov.schedule.AppController;
+import ru.romanov.schedule.R;
+import ru.romanov.schedule.utils.ApiHolder;
+import ru.romanov.schedule.utils.StringConstants;
 
 public class MainTabActivity extends AppCompatActivity {
 

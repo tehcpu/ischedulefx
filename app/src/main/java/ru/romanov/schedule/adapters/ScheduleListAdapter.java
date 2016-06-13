@@ -1,6 +1,13 @@
 package ru.romanov.schedule.adapters;
 
-import java.lang.reflect.Array;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,15 +19,6 @@ import java.util.List;
 import ru.romanov.schedule.R;
 import ru.romanov.schedule.utils.MySubject;
 import ru.romanov.schedule.utils.XMLParser;
-
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
 
 /**
  * Адаптер для главного списка расписания.

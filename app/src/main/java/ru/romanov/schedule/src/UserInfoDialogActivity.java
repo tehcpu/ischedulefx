@@ -1,17 +1,17 @@
 package ru.romanov.schedule.src;
 
-import ru.romanov.schedule.AppController;
-import ru.romanov.schedule.R;
-import ru.romanov.schedule.utils.StringConstants;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.ContactsContract.CommonDataKinds.Email;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+
+import ru.romanov.schedule.AppController;
+import ru.romanov.schedule.R;
+import ru.romanov.schedule.utils.StringConstants;
 
 public class UserInfoDialogActivity extends Activity implements OnClickListener{
 
@@ -42,4 +42,6 @@ public class UserInfoDialogActivity extends Activity implements OnClickListener{
 	public void onClick(View arg0) {
 		finish();
 	}
+
+
 }

@@ -1,28 +1,9 @@
 package ru.romanov.schedule.src;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-
-import ru.romanov.schedule.AppController;
-import ru.romanov.schedule.R;
-import ru.romanov.schedule.utils.MySubject;
-import ru.romanov.schedule.utils.MySubjectUpdateManager;
-import ru.romanov.schedule.utils.RequestStringsCreater;
-import ru.romanov.schedule.utils.StringConstants;
-import ru.romanov.schedule.utils.SubjectToRemove;
-import ru.romanov.schedule.utils.XMLParser;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -33,6 +14,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.Map;
+
+import ru.romanov.schedule.AppController;
+import ru.romanov.schedule.R;
+import ru.romanov.schedule.utils.MySubject;
+import ru.romanov.schedule.utils.MySubjectUpdateManager;
+import ru.romanov.schedule.utils.StringConstants;
+import ru.romanov.schedule.utils.SubjectToRemove;
+import ru.romanov.schedule.utils.XMLParser;
 
 public class UpdateDialogActivity extends Activity implements OnClickListener {
 

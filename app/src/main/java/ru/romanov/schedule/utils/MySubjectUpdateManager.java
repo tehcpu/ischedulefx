@@ -1,7 +1,6 @@
 package ru.romanov.schedule.utils;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class MySubjectUpdateManager {
 	public static String OK = "OK";

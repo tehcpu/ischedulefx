@@ -5,14 +5,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
@@ -204,8 +202,6 @@ public class ApiHolder {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                callback.onFail(0);
-
                 if (error != null && error.networkResponse != null) {
                     if (error.networkResponse.statusCode == 401) {
                         SharedPreferences.Editor editor = mSharedPreferences.edit();
@@ -213,8 +209,12 @@ public class ApiHolder {
                         editor.putString(StringConstants.SHARED_PASS, null);
                         editor.putString(StringConstants.TOKEN, null);
                         editor.commit();
-                        callback.onFail(1);
+                        callback.onFail(2);
+                    } else {
+                        callback.onFail(0);
                     }
+                } else {
+                    callback.onFail(0);
                 }
 
                 VolleyLog.d(TAG, "Error: " + error.getMessage());
@@ -263,8 +263,6 @@ public class ApiHolder {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                callback.onFail(0);
-
                 if (error != null && error.networkResponse != null) {
                     if (error.networkResponse.statusCode == 401) {
                         SharedPreferences.Editor editor = mSharedPreferences.edit();
@@ -272,8 +270,12 @@ public class ApiHolder {
                         editor.putString(StringConstants.SHARED_PASS, null);
                         editor.putString(StringConstants.TOKEN, null);
                         editor.commit();
-                        callback.onFail(1);
+                        callback.onFail(2);
+                    } else {
+                        callback.onFail(0);
                     }
+                } else {
+                    callback.onFail(0);
                 }
 
                 VolleyLog.d(TAG, "Error: " + error.getMessage());
@@ -313,8 +315,6 @@ public class ApiHolder {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                callback.onFail(0);
-
                 if (error != null && error.networkResponse != null) {
                     if (error.networkResponse.statusCode == 401) {
                         SharedPreferences.Editor editor = mSharedPreferences.edit();
@@ -323,7 +323,11 @@ public class ApiHolder {
                         editor.putString(StringConstants.TOKEN, null);
                         editor.commit();
                         callback.onFail(1);
+                    } else {
+                        callback.onFail(0);
                     }
+                } else {
+                    callback.onFail(0);
                 }
 
                 VolleyLog.d(TAG, "Error: " + error.getMessage());

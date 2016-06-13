@@ -1,5 +1,20 @@
 package ru.romanov.schedule.src;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,39 +22,16 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.Calendar;
 import java.util.Map;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import ru.romanov.schedule.AppController;
 import ru.romanov.schedule.R;
 import ru.romanov.schedule.adapters.ScheduleListAdapter;
 import ru.romanov.schedule.utils.MySubject;
-import ru.romanov.schedule.utils.MySubjectUpdateManager;
-import ru.romanov.schedule.utils.RequestStringsCreater;
 import ru.romanov.schedule.utils.StringConstants;
-import ru.romanov.schedule.utils.XMLParser;
-import android.app.ListActivity;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.Environment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.TextView;
 
 public class ScheduleListActivity extends Fragment {
 
@@ -65,31 +57,7 @@ public class ScheduleListActivity extends Fragment {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		/*TextView tv = (TextView) findViewById(android.R.id.empty);
-		File f = new File(Environment.getDataDirectory().getPath().concat("/schdule_response.xml"));
-		String xmlSchedule = getTestXMLStringFromLocalFile(f);
-		tv.setText(xmlSchedule);
-		try{
-			ArrayList<MySubject> sbjects = new ArrayList<MySubject>();
-			for (String key : myMap.keySet()) {
-				sbjects.add(new MySubject(key, new JSONObject(myMap.get(key))));
-			}
-			MySubjectUpdateManager manager = XMLParser.parseXMLScheduleResponse(xmlSchedule);
-			HashMap<String, String> map = new HashMap<String, String>();
-			ArrayList<MySubject> arr = new ArrayList<MySubject>();
-			for (MySubject sbj : manager.getSubjectsToAdd()) {
-				map.put(sbj.getId(), sbj.toJSONObject().toString());
-				arr.add(new MySubject(sbj.getId(),new JSONObject(map.get(sbj.getId()))));
-			}
-			SharedPreferences.Editor editor = sherPref.edit();
-			for (String key : map.keySet()) {
-				editor.putString(key, map.get(key));
-			}
-			editor.commit();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}*/
+
 		listView = (ListView) v.findViewById(android.R.id.list);
 
 		ScheduleListAdapter adapter = new ScheduleListAdapter(subjList, v.getContext());
@@ -105,6 +73,17 @@ public class ScheduleListActivity extends Fragment {
 				startActivity(i);
 			}
 		});
+
+		// Patch timebar
+		SharedPreferences sp = AppController.getInstance().getSharedPreferences(StringConstants.SCHEDULE_SHARED_PREFERENCES, Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = sp.edit();
+		Calendar calend = Calendar.getInstance();
+		// fix 01
+		SimpleDateFormat sdf = new SimpleDateFormat();
+		sdf.applyPattern("dd.MM.yyyy  kk:mm");
+		String time = sdf.format(calend.getTime());
+		editor.putString(StringConstants.SHARED_LAST_SYNC_DATE, time);
+		editor.commit();
 	}
 
 	/**

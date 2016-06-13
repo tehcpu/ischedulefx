@@ -1,36 +1,6 @@
 package ru.romanov.schedule.src;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import ru.romanov.schedule.AppController;
-import ru.romanov.schedule.R;
-import ru.romanov.schedule.adapters.CurrentDayAdapter;
-import ru.romanov.schedule.adapters.ScheduleCheckListAdapter;
-import ru.romanov.schedule.adapters.UpdateAdapter;
-import ru.romanov.schedule.models.Subject;
-import ru.romanov.schedule.utils.ApiHolder;
-import ru.romanov.schedule.utils.MySubject;
-import ru.romanov.schedule.utils.RequestStringsCreater;
-import ru.romanov.schedule.utils.StringConstants;
-import ru.romanov.schedule.utils.XMLParser;
-
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.ListActivity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -44,9 +14,26 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Objects;
+
+import ru.romanov.schedule.AppController;
+import ru.romanov.schedule.R;
+import ru.romanov.schedule.adapters.UpdateAdapter;
+import ru.romanov.schedule.models.Subject;
+import ru.romanov.schedule.utils.ApiHolder;
+import ru.romanov.schedule.utils.MySubject;
+import ru.romanov.schedule.utils.StringConstants;
 
 public class UpdateListActivity extends Fragment {
 
@@ -123,7 +110,9 @@ public class UpdateListActivity extends Fragment {
 					SharedPreferences sp = AppController.getInstance().getSharedPreferences(StringConstants.SCHEDULE_SHARED_PREFERENCES, Context.MODE_PRIVATE);
 					SharedPreferences.Editor editor = sp.edit();
 					Calendar calend = Calendar.getInstance();
-					SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.YYYY  kk:mm", Locale.ROOT);
+					// fix 01
+					SimpleDateFormat sdf = new SimpleDateFormat();
+					sdf.applyPattern("dd.MM.yyyy  kk:mm");
 					String time = sdf.format(calend.getTime());
 					editor.putString(StringConstants.SHARED_LAST_SYNC_DATE, time);
 					editor.commit();

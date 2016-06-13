@@ -4,9 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
@@ -106,10 +105,48 @@ public class ScheduleDayActivity extends AppCompatActivity {
                     editor.putString(StringConstants.SHARED_PASS, null);
                     editor.putString(StringConstants.TOKEN, null);
                     editor.commit();
-                    Intent myIntent = new Intent(ScheduleDayActivity.this, IScheduleActivity.class);
-                    ScheduleDayActivity.this.startActivity(myIntent);
+                    Intent myIntent = new Intent(getApplicationContext(), IScheduleActivity.class);
+                    startActivity(myIntent);
                     finish();
                 }
+                return null;
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ApiHolder.getInstance().validateToken(new ApiHolder.onResponse() {
+            @Override
+            public JSONObject onSuccess(Object response) {
+                Toast.makeText(getApplicationContext(),
+                        "Истекло время действия токена.. Пожалуйста, перелогиньтесь", Toast.LENGTH_LONG).show();
+                SharedPreferences sp = AppController.getInstance().getSharedPreferences(StringConstants.SCHEDULE_SHARED_PREFERENCES, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString(StringConstants.SHARED_LOGIN, null);
+                editor.putString(StringConstants.SHARED_PASS, null);
+                editor.putString(StringConstants.TOKEN, null);
+                editor.commit();
+                Intent myIntent = new Intent(ScheduleDayActivity.this, IScheduleActivity.class);
+                startActivity(myIntent);
+                finish();
+                return null;
+            }
+
+            @Override
+            public JSONObject onFail(int code) {
+                Toast.makeText(getApplicationContext(),
+                        "Истекло время действия токена.. Пожалуйста, перелогиньтесь", Toast.LENGTH_LONG).show();
+                SharedPreferences sp = AppController.getInstance().getSharedPreferences(StringConstants.SCHEDULE_SHARED_PREFERENCES, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString(StringConstants.SHARED_LOGIN, null);
+                editor.putString(StringConstants.SHARED_PASS, null);
+                editor.putString(StringConstants.TOKEN, null);
+                editor.commit();
+                Intent myIntent = new Intent(ScheduleDayActivity.this, IScheduleActivity.class);
+                startActivity(myIntent);
+                finish();
                 return null;
             }
         });
